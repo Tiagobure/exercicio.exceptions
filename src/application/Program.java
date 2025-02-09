@@ -34,6 +34,7 @@ public class Program {
 			System.out.print("Enter amount for withdraw:");
 			Double withdraw = sc.nextDouble();
 			account.Withdraw(withdraw);
+			
 			System.out.println(account.toString());
 
 		} catch (DomainException e) {

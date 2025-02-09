@@ -50,24 +50,32 @@ public class Account {
 
 	}
 
-	public void Withdraw(Double amount) throws DomainException {
+	public void Withdraw(Double amount) throws DomainException{
 
+		validateWithdraw(amount);
 		balance -= amount;
 
-		if (amount > withdrawLimit) {
+
+	}
+	private void validateWithdraw(Double amount) throws DomainException {
+
+
+		if (amount > getWithdrawLimit()) {
 			throw new DomainException("The amount exceeds withdraw limit!");
 
 		}
-		if (amount > balance) {
+		if (amount > getBalance()) {
 			throw new DomainException("Not enough balance :(");
 
 		}
 
 	}
+	
+	
 
 	@Override
 	public String toString() {
-		return "new balance: " + String.format("%.2f", balance);
+		return "new balance: " + String.format("%.2f", getBalance());
 
 	}
 
