@@ -8,10 +8,11 @@ public class Account {
 	private String holder;
 	private Double balance;
 	private Double withdrawLimit;
-	
+
 	public Account() {
-		
+
 	}
+
 	public Account(Integer number, String holder, Double balance, Double withdrawLimit) {
 		this.number = number;
 		this.holder = holder;
@@ -39,34 +40,35 @@ public class Account {
 		return balance;
 	}
 
-
 	public Double getWithdrawLimit() {
 		return withdrawLimit;
 	}
-	
+
 	public void deposit(Double amount) {
-		
+
 		balance += amount;
-		
+
 	}
 
-    public void Withdraw(Double amount) throws DomainException {
-    	  		
-    	
-    	if(amount > withdrawLimit ) {
+	public void Withdraw(Double amount) throws DomainException {
+
+		balance -= amount;
+
+		if (amount > withdrawLimit) {
 			throw new DomainException("The amount exceeds withdraw limit!");
 
-    	}
-    	if(amount > balance) {
+		}
+		if (amount > balance) {
 			throw new DomainException("Not enough balance :(");
 
-    	}
-    }
-    @Override
-	public String toString() {
-		return "new balance: "+ balance;
+		}
 
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "new balance: " + String.format("%.2f", balance);
+
+	}
+
 }
